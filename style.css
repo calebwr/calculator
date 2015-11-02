@@ -1,0 +1,12 @@
+h1{
+	text-align:center;
+	color:black;
+}
+body{
+	display: flex;
+	background-color:white;
+}
+#calculator{
+	flex-basis: 20%;
+	flex-wrap: wrap;
+}
