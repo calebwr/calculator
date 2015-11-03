@@ -1,29 +1,50 @@
-var buttons = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '+', '='];
+var myButtons = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '+', '='];
 
-function ready(){
+function ready() {
     var container = document.createElement('div');
-    var calculator = document.createElement('div');
-    
+
     container.id = 'container';
-    calculator.id = 'calculator';
+
+    container.appendChild(headerBuild());
+
+    container.appendChild(calculatorBuild());
     
-    container.appendChild(calculator);
-    
-    calculator.appendChild(calculator());
+    document.body.appendChild(container);
 }
 
-function calculator(){
+function headerBuild(){
+    var header = document.createElement('h1');
+    header.textContent = 'Calculator';
+    return header;
+}
+
+function calculatorBuild() {
     var calcWrap = document.createElement('div');
-    calcWrap.id = 'calc';
-    
-    var field = document.createElement('input');
-    field.id = 'calc-box';
-    calcWrap.appendChild(field);
-    
-    function buttons(buttonContent){
+    calcWrap.id = 'calculator';
+    var input = document.createElement('input');
+    input.id = 'calc-input';
+    input.className = 'calin';
+    calcWrap.appendChild(input);
+
+    myButtons.forEach(function(content) {
         var button = document.createElement('button');
-        button.id = buttonContent;
+        button.id = content;
+        button.className = 'calbut';
+        button.appendChild(document.createTextNode(content));
+        button.addEventListener('click', clickHandler, false)
         calcWrap.appendChild(button);
-    }
+    });
     return calcWrap;
 }
+
+function clickHandler(event){
+    var input = document.getElementById('calc-input');
+    if(event.target.id == '='){
+        input.value = math.eval(input.value);
+    } else {
+        input.value = input.value + event.target.id;
+    }
+}
+
+ready();
+
