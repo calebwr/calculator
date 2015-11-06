@@ -1,4 +1,4 @@
-var myButtons = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '+', '='];
+var myButtons = ['c', '%', '(', ')', '7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '+', '='];
 
 function ready() {
     var container = document.createElement('div');
@@ -31,7 +31,7 @@ function calculatorBuild() {
         button.id = content;
         button.className = 'calbut';
         button.appendChild(document.createTextNode(content));
-        button.addEventListener('click', clickHandler, false)
+        button.addEventListener('click', clickHandler, false);
         calcWrap.appendChild(button);
     });
     return calcWrap;
